@@ -1,12 +1,11 @@
 const form = document.getElementById('form');
 form.addEventListener('submit', function(event) {
+    /* Previne o comportamento padrão do evento submit do JS, ou seja,
+    impede o recarregamento da página */
     event.preventDefault();
 
     const weight = document.getElementById('weight').value;
-    let height = parseFloat(document.getElementById('height').value);
-
-    // Formata a altura com duas casas decimais
-    height = height.toFixed(2).replace('.', ',');
+    const height = document.getElementById('height').value;
 
     const bmi = (weight / (height * height)).toFixed(2);
 
@@ -49,10 +48,8 @@ form.addEventListener('submit', function(event) {
     }
 });
 
-// Remove o evento 'keypress' e adiciona o evento 'keydown'
-form.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        document.getElementById('calculate').click();
+form.addEventListener('keypress', function(event) {
+    if (event.key === 'press') {
+        document.getElementById('#calculate').click();
     }
 });
